@@ -72,16 +72,15 @@
 
     <div style="float:left; font-size:22px; ">Total R$</div>
     <div style="float:left; font-size:22px; margin-left:5px;" id="divTotal">0.00</div>
-   
+
     <br />
 
     <textarea type="hidden" asp-for="ListaProdutos" id="ListaProdutosJson"></textarea>
 
-    <input type="hidden"  asp-for="Total" id="txtTotal" />
+    <input type="hidden" asp-for="Total" id="txtTotal" />
 
-    <button type="submit" class="btn btn-block btn-success">
-        Registrar
-    </button>
+    <button type="submit" class="btn btn-block btn-success">Registrar</button>
+    <button type="button" class="btn btn-block btn-primary" onclick="Voltar()">Listagem de Vendas</button>
 
 </form>
 
@@ -99,9 +98,13 @@
     var TxtTotal = document.getElementById("txtTotal");
 
 
+    function Voltar() {
+        window.location.href = "../Venda/Index/";
+    }
+
     function AdicionarProduto() {
 
-        var DescricaoPreco = CodigoProduto.options[CodigoProduto.selectedIndex].text;       
+        var DescricaoPreco = CodigoProduto.options[CodigoProduto.selectedIndex].text;
         var ArrayDescricaoPreco = DescricaoPreco.split('|');
         var total = (ArrayDescricaoPreco[1].replace(",", ".") * QtdeProduto.value);
 
@@ -119,8 +122,8 @@
 
         console.log(Itens.Produtos);
 
-        ListaProdutosJson.innerHTML = JSON.stringify(Itens.Produtos);       
-        
+        ListaProdutosJson.innerHTML = JSON.stringify(Itens.Produtos);
+
         console.log("teste0");
 
         var produto = "<tr>" +
@@ -128,15 +131,15 @@
             "<td>" + ArrayDescricaoPreco[0] + "</td>" +
             "<td>" + QtdeProduto.value + "</td>" +
             "<td> R$" + ArrayDescricaoPreco[1] + "</td>" +
-            "<td> R$" +total + "</td>" +
+            "<td> R$" + total + "</td>" +
             "</tr>";
 
         console.log("teste1");
         console.log(produto);
         console.log("teste2");
         ListaProdutos.innerHTML += produto;
-    
-        
+
+
         var totalGeral = Math.round((TotalVenda.innerText * 1 + total) * 100) / 100;
 
         //TxtTotal.value = totalGeral.replace(".",","); aasim nao funciona

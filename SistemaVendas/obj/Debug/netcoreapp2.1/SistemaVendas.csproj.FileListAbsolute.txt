@@ -48,3 +48,8 @@ C:\Users\mhbarth\source\repos\SistemaVendas\SistemaVendas\obj\Debug\netcoreapp2.
 C:\Users\mhbarth\source\repos\SistemaVendas\SistemaVendas\obj\Debug\netcoreapp2.1\Razor\Views\Venda\Registrar.cshtml.g.cs
 C:\Users\mhbarth\source\repos\SistemaVendas\SistemaVendas\obj\Debug\netcoreapp2.1\SistemaVendas.csprojAssemblyReference.cache
 C:\Users\mhbarth\source\repos\SistemaVendas\SistemaVendas\obj\Debug\netcoreapp2.1\Razor\Views\Venda\Index.cshtml.g.cs
+C:\Users\mhbarth\source\repos\SistemaVendas\SistemaVendas\obj\Debug\netcoreapp2.1\Razor\Views\Relatorio\Index.cshtml.g.cs
+C:\Users\mhbarth\source\repos\SistemaVendas\SistemaVendas\obj\Debug\netcoreapp2.1\Razor\Views\Relatorio\Grafico.cshtml.g.cs
+C:\Users\mhbarth\source\repos\SistemaVendas\SistemaVendas\obj\Debug\netcoreapp2.1\Razor\Views\Relatorio\Comissao.cshtml.g.cs
+C:\Users\mhbarth\source\repos\SistemaVendas\SistemaVendas\obj\Debug\netcoreapp2.1\Razor\Views\Relatorio\Vendas.cshtml.g.cs
+C:\Users\mhbarth\source\repos\SistemaVendas\SistemaVendas\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutLogin.cshtml.g.cs

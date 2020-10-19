@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Data;
 using SistemaVendas.Utils;
 using System.ComponentModel.DataAnnotations;
+using MySql.Data.MySqlClient;
 
 namespace SistemaVendas.Models
 {
@@ -21,12 +22,19 @@ namespace SistemaVendas.Models
 
 
         //Existe um problema grave de segurança com essa abordagem - SQL INJECTION
+        //Existe um problema grave de segurança com essa abordagem => SQL Injection
+        //Vamos depois criar um método mais adequado
         public bool ValidarLogin()
-        {           
-            string sql = $"SELECT ID, NOME FROM VENDEDOR WHERE EMAIL = '{Email}' AND SENHA = '{Senha}'";
-            DAL objDal = new DAL();
-            DataTable dt = objDal.RetDataTable(sql);
+        {
+            string sql = $"SELECT ID, NOME FROM VENDEDOR WHERE EMAIL=@email AND SENHA=@senha";
+            MySqlCommand Command = new MySqlCommand();
+            Command.CommandText = sql;
+            Command.Parameters.AddWithValue("@email", Email);
+            Command.Parameters.AddWithValue("@senha", Senha);
 
+            DAL objDAL = new DAL();
+
+            DataTable dt = objDAL.RetDataTable(Command);
             if (dt.Rows.Count == 1)
             {
                 Id = dt.Rows[0]["ID"].ToString();

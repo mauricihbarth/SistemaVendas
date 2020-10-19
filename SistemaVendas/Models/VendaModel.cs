@@ -21,14 +21,52 @@ namespace SistemaVendas.Models
 
         public string ListaProdutos { get; set; }
 
+
+
         public List<VendaModel> ListagemVendas()
         {
-
-            return null;
-
+            return RetornarListagemVendas("1900/01/01", "2200/01/01");
         }
 
+        //Para atender o filtro do relatorio
+        public List<VendaModel> ListagemVendas(string DataDe, string DataAte )
+        {
+            return RetornarListagemVendas(DataDe, DataAte);
+        }
 
+        public List<VendaModel> RetornarListagemVendas(string DataDe, string DataAte)
+        {
+            List<VendaModel> lista = new List<VendaModel>();
+            VendaModel Item;
+
+            DAL objDal = new DAL();
+
+            string sql = "select venda.id, venda.data, venda.total,  vendedor.nome as vendedor, cliente.nome nomecliente " +
+                        " from venda " +
+                        " inner join vendedor on vendedor.id = venda.vendedor_id " +
+                        " inner join cliente on cliente.id = venda.cliente_id " +
+                        $" where venda.data between '  { DataDe} ' and  ' { DataAte } ' " + 
+                        " order by data, total ";
+
+
+            DataTable dt = objDal.RetDataTable(sql);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Item = new VendaModel
+                {
+
+                    Id = dt.Rows[i]["id"].ToString(),
+                    Data = DateTime .Parse(dt.Rows[i]["data"].ToString()).ToString("dd/MM/yyyy"),
+                    Total = Double.Parse(dt.Rows[i]["total"].ToString()),
+                    Cliente_Id = dt.Rows[i]["nomecliente"].ToString(),
+                    Vendedor_Id = dt.Rows[i]["vendedor"].ToString()
+                };
+                lista.Add(Item);
+            }
+            return lista;
+
+        }
 
         public List<ClienteModel> RetornarListaClientes()
         {

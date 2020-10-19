@@ -1,11 +1,18 @@
 ﻿@model LoginModel
 
 @{
-    Layout = null; //Cancelar o uso do layout template - perde o bootstrap
+    //Layout = null; //Cancelar o uso do layout template - perde o bootstrap
+    Layout = "../Shared/_LayoutLogin.cshtml";
+
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
 <style type="text/css">
+    body{
+        background-image: url('../../images/bg.jpg');
+        background-repeat: no-repeat;
+    }
+    
     .login-form {
         width: 400px;
         margin: 30px auto;
@@ -108,7 +115,7 @@
                         <i class="fa fa-lock"></i>
                     </span>
                 </div>
-                <input type="text" class="form-control" asp-for="Senha" placeholder="Password">
+                <input type="text" class="form-control" asp-for="Senha" naxlength="10" placeholder="Password">
             </div>
             <span asp-validation-for="Senha" class="text-danger"></span>
         </div>
@@ -122,5 +129,5 @@
         <div class="or-seperator"><i>or</i></div>
         <p class="text-center">Login with your social media account</p>
     </form>
-    <p class="text-center text-muted small">Don't have an account? <a href="#">Sign up here!</a></p>
+    <p class="text-center text-muted small" style="color:#000000;">Don't have an account? <a href="#">Sign up here!</a></p>
 </div>

@@ -1,2 +1,43 @@
 ﻿<h2>Index</h2>
 
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>Vendedor</th>
+            <th>Cliente</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var item in (List<VendaModel>)ViewBag.ListaVendas)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Data</td>
+                    <td>@item.Vendedor_Id</td>
+                    <td>@item.Cliente_Id</td>
+                    <td>R$ @item.Total</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<br />
+
+<div class="col-lg-2">
+    <button type="button" class="btn btn-block btn-primary" onclick="Cadastrar()">Registrar </button>
+</div>
+
+
+<script>
+
+    function Cadastrar() {
+        window.location.href = "../Venda/Registrar"
+    }
+</script>
+
